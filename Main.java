@@ -36,6 +36,7 @@ public class Main {
         .saveAsTextFile("hdfs:///output1");
 
 
+    //Task 2
     JavaRDD<Row> recordRows = records
         .map(record -> RowFactory.create(new java.sql.Date(record.getDate().getTime()), record.getMethod(), record.getStatus(), 1));
 
@@ -54,6 +55,7 @@ public class Main {
         .toJavaRDD()
         .saveAsTextFile("hdfs:///output2");
 
+    //Task 3
     JavaRDD<Row> rows = records
         .filter(record -> record.getStatus() >= 400)
         .map(record -> RowFactory.create(new java.sql.Date(record.getDate().getTime()), 1));
